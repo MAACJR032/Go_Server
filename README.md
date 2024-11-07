@@ -36,8 +36,8 @@ To start the server, you can either:
     ```
 
 ## API Endpoints
-- `GET /api/v1/openings` - List all entries
-- `POST /api/v1/opening` - Create a new entry
-- `GET /api/v1/opening?id={id}` - Retrieve a specific entry
-- `PUT /api/v1/opening?id={id}` - Update an entry
-- `DELETE /api/v1/opening?id={id}` - Delete an entry
+- `GET http://localhost:8080/api/v1/openings` - List all entries
+- `POST http://localhost:8080/api/v1/opening` - Create a new entry
+- `GET http://localhost:8080/api/v1/opening?id={id}` - Retrieve a specific entry
+- `PUT http://localhost:8080/api/v1/opening?id={id}` - Update an entry
+- `DELETE http://localhost:8080/api/v1/opening?id={id}` - Delete an entry
