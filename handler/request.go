@@ -2,7 +2,7 @@ package handler
 
 import "fmt"
 
-type CreateOpeningRequest struct {
+type OpeningRequest struct {
 	Role     string `json:"role"`
 	Company  string `json:"company"`
 	Location string `json:"location"`
@@ -15,7 +15,7 @@ func errParamRequired(name, typ string) error {
     return fmt.Errorf("parameter: %s (type: %s) is required", name, typ)
 }
 
-func (r *CreateOpeningRequest) Validate() error {
+func (r *OpeningRequest) ValidateCreateOpening() error {
     if r.Role == "" && r.Company == "" && r.Location == "" && 
        r.Link == "" && r.Remote == nil && r.Salary <= 0 {
         return fmt.Errorf("request body is empty or malformed")
@@ -40,4 +40,15 @@ func (r *CreateOpeningRequest) Validate() error {
 	}
 
     return nil
+}
+
+func (r *OpeningRequest) ValidateUpdateOpening() error {
+	// The validation is true if at least one of the fields is provided
+	fmt.Println(r.Role)
+	if r.Role != "" || r.Company != "" || r.Location != "" || 
+       r.Link != "" || r.Remote != nil || r.Salary > 0 {
+        return nil
+    }
+
+	return fmt.Errorf("at least one valid field must be provided")
 }
